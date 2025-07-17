@@ -1,0 +1,16 @@
+{
+  "name": "cs-aluguel-supabase",
+  "version": "2.0.0",
+  "description": "Sistema CS Aluguel - 100% Supabase",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo 'Sistema rodando'",
+    "build": "echo 'Build concluído'"
+  },
+  "keywords": ["supabase", "aluguel", "sistema"],
+  "author": "CS Aluguel",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+} 

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Aluguel - Sistema Supabase</title>
+    
+    <!-- SISTEMA SUPABASE -->
+    <script>
+        console.log('🔧 Sistema iniciando...');
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="login-container">
+        <div class="login-box">
+            <img src="logo.png" alt="CS Logo" class="login-logo">
+            <h2>Login do Sistema</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" required>
+                </div>
+                <p id="login-error-message" class="error-message"></p>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- App principal será carregado aqui -->
+    <div id="main-app-content" style="display: none;">
+        <h1>Sistema CS Aluguel</h1>
+        <p>Sistema carregado com Supabase</p>
+        <button id="logout-btn">Sair</button>
+    </div>
+
+    <script>
+        console.log('🔧 Inicializando sistema LIMPO...');
+        
+        // Configuração Supabase
+        const SUPABASE_URL = 'https://auipbmfmzzftgareozly.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1aXBibWZtenpmdGdhcmVvemx5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI3NTkzODksImV4cCI6MjA2ODMzNTM4OX0.5zCJNljxLZ0eOLd17dJGazEhHIYpX_y5TcU-BzsVSkw';
+        
+        const { createClient } = supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        console.log('✅ Supabase Client:', supabaseClient);
+
+        // Login simples
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === 'pedropsf2011@gmail.com' && password === '123456789') {
+                console.log('✅ Login OK');
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('main-app-content').style.display = 'block';
+            } else {
+                document.getElementById('login-error-message').textContent = 'Credenciais inválidas';
+            }
+        });
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            document.getElementById('login-container').style.display = 'block';
+            document.getElementById('main-app-content').style.display = 'none';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        });
+    </script>
+</body>
+</html> 

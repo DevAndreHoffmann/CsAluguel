@@ -1,0 +1,19 @@
+# Ignorar tudo que está fora da pasta atual
+../
+../../
+../../../
+
+# Ignorar arquivos de sistema
+*.tmp
+*.log
+*.bak
+*.backup
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignorar node_modules se existir
+node_modules/
+
+# Manter apenas os arquivos do projeto
+!.gitignore 
